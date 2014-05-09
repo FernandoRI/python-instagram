@@ -146,7 +146,7 @@ def bind_method(**config):
                     try:
                         api_responses, url = self._do_api_request(url, method, body, headers)
                         connected = true
-                    except Exception, e
+                    except Exception, e:
                         print repr(e)
                         time.sleep(3)
                         print "Waiting after connection error"
