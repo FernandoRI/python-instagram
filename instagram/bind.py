@@ -141,7 +141,15 @@ def bind_method(**config):
             headers = headers or {}
             pages_read = 0
             while url and pages_read < self.max_pages:
-                api_responses, url = self._do_api_request(url, method, body, headers)
+                connected = False
+                while not connected:
+                    try:
+                        api_responses, url = self._do_api_request(url, method, body, headers)
+                        connected = true
+                    except Exception, e
+                        print repr(e)
+                        time.sleep(3)
+                        print "Waiting after connection error"
                 pages_read += 1
                 yield api_responses, url
             return
